@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GhostNotify</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ff99;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+    p {
+      max-width: 700px;
+      text-align: center;
+      margin-bottom: 2em;
+    }
+    .address-box {
+      background: #1a1a1a;
+      padding: 1em;
+      margin: 1em;
+      border: 1px solid #00ff99;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 600px;
+      word-break: break-word;
+    }
+    .label {
+      font-weight: bold;
+      color: #66ffcc;
+    }
+    .qr {
+      margin-top: 0.5em;
+    }
+    .lang-switch {
+      margin-bottom: 20px;
+    }
+    button {
+      background: #1a1a1a;
+      color: #00ff99;
+      border: 1px solid #00ff99;
+      border-radius: 4px;
+      padding: 0.5em 1em;
+      margin: 0 0.5em;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00ff99;
+      color: #0d0d0d;
+    }
+  </style>
+</head>
+<body>
+  <h1>GhostNotify</h1>
+  <div class="lang-switch">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('de')">DE</button>
+    <button onclick="setLang('es')">ES</button>
+    <button onclick="setLang('fr')">FR</button>
+  </div>
+
+  <p id="description"></p>
+
+  <div class="address-box">
+    <div class="label">BTC address:</div>
+    bc1qlg4x0lyf6akssj42jpmul7g8sslywgnm6qlsm2
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=bc1qlg4x0lyf6akssj42jpmul7g8sslywgnm6qlsm2" alt="BTC QR">
+    </div>
+  </div>
+
+  <div class="address-box">
+    <div class="label">XMR address:</div>
+    877vQR9dQ7fdeK9G5bAmUbadUc6fufDM5PdSRdmDowf4BC9jd1LiQhu9qyQxFjmtg2M3dpByc5fYBFTnYJbmrnVHGhJsZi3
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=877vQR9dQ7fdeK9G5bAmUbadUc6fufDM5PdSRdmDowf4BC9jd1LiQhu9qyQxFjmtg2M3dpByc5fYBFTnYJbmrnVHGhJsZi3" alt="XMR QR">
+    </div>
+  </div>
+
+  <script>
+    const descriptions = {
+      en: `GhostNotify is an anonymous service that alerts owners of compromised websites. No payment is required. If you'd like to support us, crypto donations are welcome.`,
+      de: `GhostNotify ist ein anonymer Dienst, der Besitzer kompromittierter Websites informiert. Keine Zahlung erforderlich. Spenden in Krypto sind willkommen.`,
+      es: `GhostNotify es un servicio anónimo que alerta a propietarios de sitios comprometidos. No se requiere pago. Las donaciones en cripto son bienvenidas.`,
+      fr: `GhostNotify est un service anonyme qui alerte les propriétaires de sites compromis. Aucun paiement requis. Les dons en crypto sont les bienvenus.`
+    };
+
+    function setLang(lang) {
+      document.getElementById('description').innerText = descriptions[lang] || descriptions['en'];
+    }
+
+    const userLang = navigator.language.slice(0, 2);
+    setLang(['en', 'de', 'es', 'fr'].includes(userLang) ? userLang : 'en');
+  </script>
+</body>
+</html>

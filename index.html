@@ -42,25 +42,30 @@
     .address {
       margin-top: 0.5em;
       word-break: break-word;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.5em;
     }
     .copy-btn {
-      background: none;
+      background: #00ff99;
       border: none;
-      color: #00ff99;
+      color: #0d0d0d;
+      border-radius: 4px;
       cursor: pointer;
-      margin-left: 10px;
-      font-size: 1.1em;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
     }
     .copy-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: #00ff99;
+      width: 16px;
+      height: 16px;
+      fill: #0d0d0d;
     }
     .copy-btn:hover svg {
-      fill: #ffffff;
+      fill: #000;
     }
     .qr {
       margin-top: 0.5em;
@@ -84,7 +89,6 @@
     .copied-msg {
       color: #ffffff;
       font-size: 0.8em;
-      margin-left: 10px;
       display: none;
     }
   </style>

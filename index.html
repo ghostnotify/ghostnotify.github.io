@@ -155,6 +155,74 @@
 
     const userLang = navigator.language.slice(0, 2);
     setLang(['en', 'de', 'es', 'fr'].includes(userLang) ? userLang : 'en');
-  </script>
+  
+    const pgpSections = {
+      en: `
+    <div class="address-box" id="pgp">
+      <div class="label">PGP Public Key</div>
+      <p>This is our public key to verify GhostNotify messages.</p>
+      <ul style="text-align: left;">
+        <li><strong>Fingerprint:</strong> <code>ABCD 1234 5678 90EF 1234 5678 90EF ABCD 1234 5678</code></li>
+        <li><strong>Download:</strong> <a href="ghostnotify.asc" download>ghostnotify.asc</a></li>
+      </ul>
+      <p>Import with GPG:</p>
+      <code>gpg --import ghostnotify.asc</code>
+    </div>
+    `,
+      de: `
+    <div class="address-box" id="pgp">
+      <div class="label">PGP öffentlicher Schlüssel</div>
+      <p>Dies ist unser öffentlicher Schlüssel zur Verifizierung von GhostNotify-Nachrichten.</p>
+      <ul style="text-align: left;">
+        <li><strong>Fingerabdruck:</strong> <code>ABCD 1234 5678 90EF 1234 5678 90EF ABCD 1234 5678</code></li>
+        <li><strong>Download:</strong> <a href="ghostnotify.asc" download>ghostnotify.asc</a></li>
+      </ul>
+      <p>Import mit GPG:</p>
+      <code>gpg --import ghostnotify.asc</code>
+    </div>
+    `,
+      es: `
+    <div class="address-box" id="pgp">
+      <div class="label">Clave pública PGP</div>
+      <p>Esta es nuestra clave pública para verificar los mensajes de GhostNotify.</p>
+      <ul style="text-align: left;">
+        <li><strong>Huella digital:</strong> <code>ABCD 1234 5678 90EF 1234 5678 90EF ABCD 1234 5678</code></li>
+        <li><strong>Descargar:</strong> <a href="ghostnotify.asc" download>ghostnotify.asc</a></li>
+      </ul>
+      <p>Importar con GPG:</p>
+      <code>gpg --import ghostnotify.asc</code>
+    </div>
+    `,
+      fr: `
+    <div class="address-box" id="pgp">
+      <div class="label">Clé publique PGP</div>
+      <p>Voici notre clé publique pour vérifier les messages de GhostNotify.</p>
+      <ul style="text-align: left;">
+        <li><strong>Empreinte:</strong> <code>ABCD 1234 5678 90EF 1234 5678 90EF ABCD 1234 5678</code></li>
+        <li><strong>Télécharger:</strong> <a href="ghostnotify.asc" download>ghostnotify.asc</a></li>
+      </ul>
+      <p>Importer avec GPG:</p>
+      <code>gpg --import ghostnotify.asc</code>
+    </div>
+    `
+    };
+    const pgpContainer = document.createElement('div');
+    pgpContainer.innerHTML = pgpSections[lang] || pgpSections['en'];
+    document.body.appendChild(pgpContainer);
+
+</script>
+
+  <p>
+      Для проверки подлинности сообщений от GhostNotify используйте наш публичный PGP-ключ.
+    </p>
+    <ul style="text-align: left;">
+      <li><strong>Email:</strong> specter.scanner@proton.me</li>
+      <li><strong>Fingerprint:</strong> <code>ABCD 1234 5678 90EF 1234 5678 90EF ABCD 1234 5678</code></li>
+      <li><strong>Скачать ключ:</strong> <a href="ghostnotify.asc" download>ghostnotify.asc</a></li>
+    </ul>
+    <p>Импорт в GPG:</p>
+    <code>gpg --import ghostnotify.asc</code>
+  </div>
+
 </body>
 </html>

@@ -35,6 +35,10 @@
       width: 90%;
       max-width: 600px;
       word-break: break-word;
+      cursor: pointer;
+    }
+    .address-box:hover {
+      background: #262626;
     }
     .label {
       font-weight: bold;
@@ -72,17 +76,17 @@
 
   <p id="description"></p>
 
-  <div class="address-box">
+  <div class="address-box" onclick="copyToClipboard(this)">
     <div class="label">BTC address:</div>
-    bc1qlg4x0lyf6akssj42jpmul7g8sslywgnm6qlsm2
+    <div class="address">bc1qlg4x0lyf6akssj42jpmul7g8sslywgnm6qlsm2</div>
     <div class="qr">
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=bc1qlg4x0lyf6akssj42jpmul7g8sslywgnm6qlsm2" alt="BTC QR">
     </div>
   </div>
 
-  <div class="address-box">
+  <div class="address-box" onclick="copyToClipboard(this)">
     <div class="label">XMR address:</div>
-    877vQR9dQ7fdeK9G5bAmUbadUc6fufDM5PdSRdmDowf4BC9jd1LiQhu9qyQxFjmtg2M3dpByc5fYBFTnYJbmrnVHGhJsZi3
+    <div class="address">877vQR9dQ7fdeK9G5bAmUbadUc6fufDM5PdSRdmDowf4BC9jd1LiQhu9qyQxFjmtg2M3dpByc5fYBFTnYJbmrnVHGhJsZi3</div>
     <div class="qr">
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=877vQR9dQ7fdeK9G5bAmUbadUc6fufDM5PdSRdmDowf4BC9jd1LiQhu9qyQxFjmtg2M3dpByc5fYBFTnYJbmrnVHGhJsZi3" alt="XMR QR">
     </div>
@@ -98,6 +102,16 @@
 
     function setLang(lang) {
       document.getElementById('description').innerText = descriptions[lang] || descriptions['en'];
+    }
+
+    function copyToClipboard(el) {
+      const text = el.querySelector('.address').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        el.style.borderColor = '#ffffff';
+        setTimeout(() => {
+          el.style.borderColor = '#00ff99';
+        }, 1000);
+      });
     }
 
     const userLang = navigator.language.slice(0, 2);
